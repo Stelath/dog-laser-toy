@@ -1,0 +1,5 @@
+{
+    "board": "arduino:avr:unowifi",
+    "port": "COM3",
+    "sketch": "DogLaserToy.ino"
+}
