@@ -8,8 +8,6 @@
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
 
-// Setup servos
-
 bool active = false;
 
 // Set the laser wait time in milliseconds
@@ -18,17 +16,11 @@ int laserWaitTime = 1000;
 // Setup a variable to record the last time the laser moved
 long timeOfLastMovement;
 
+// Setup servos
 Servo servo1;
 Servo servo2;
 
 long randNumber;
-
-// Function that points the laser at certain coordinates
-  void laserCoordinates(float xPos, float yPos)
-  {
-    servo1.write((-xPos * 1.8) + 90);
-    servo2.write(-yPos * 1.8);
-  }
 
 void setup() 
 {
@@ -54,11 +46,12 @@ void loop()
   {
     if (laserWaitTime <= millis() - timeOfLastMovement) {
       // Set random positions
-    float xRandPos = random(0, 101);
-    float yRandPos = random(0, 101);
+    float xRandPos = random(0, 91);
+    float yRandPos = random(65, 106);
 
     // Move the laser
-    laserCoordinates(xRandPos, yRandPos);
+    servo1.write(xRandPos);
+    servo2.write(yRandPos);
 
     // Record time
     timeOfLastMovement = millis();
