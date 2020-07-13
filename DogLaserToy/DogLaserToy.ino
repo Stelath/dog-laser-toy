@@ -47,8 +47,8 @@ void loop()
   {
     if (laserWaitTime <= millis() - timeOfLastMovement) {
       // Set random positions
-    float xRandPos = random(15, 86);
-    float yRandPos = random(65, 86);
+    float xRandPos = random(5, 96);
+    float yRandPos = random(65, 101);
 
     // Move the laser
     servo1.write(xRandPos);
