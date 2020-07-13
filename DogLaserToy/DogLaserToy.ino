@@ -3,15 +3,15 @@
  
 #define SS_PIN 10
 #define RST_PIN 9
-#define SERVO1PIN 2
-#define SERVO2PIN 3
+#define SERVO1PIN 3
+#define SERVO2PIN 5
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
 
 bool active = false;
 
 // Set the laser wait time in milliseconds
-int laserWaitTime = 1000;
+int laserWaitTime = 2500;
 
 // Setup a variable to record the last time the laser moved
 long timeOfLastMovement;
@@ -36,7 +36,8 @@ void setup()
   servo2.attach(SERVO2PIN);
 
   // Reset Servo Pos
-  laserCoordinates(0, 0);
+  servo1.write(50);
+  servo2.write(65);
 }
 
 void loop() 
@@ -46,8 +47,8 @@ void loop()
   {
     if (laserWaitTime <= millis() - timeOfLastMovement) {
       // Set random positions
-    float xRandPos = random(0, 91);
-    float yRandPos = random(65, 106);
+    float xRandPos = random(15, 86);
+    float yRandPos = random(55, 96);
 
     // Move the laser
     servo1.write(xRandPos);
