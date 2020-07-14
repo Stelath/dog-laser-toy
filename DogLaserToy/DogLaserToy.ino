@@ -37,7 +37,7 @@ void setup()
 
   // Reset Servo Pos
   servo1.write(50);
-  servo2.write(65);
+  servo2.write(90);
 }
 
 void loop() 
@@ -47,8 +47,8 @@ void loop()
   {
     if (laserWaitTime <= millis() - timeOfLastMovement) {
       // Set random positions
-    float xRandPos = random(5, 96);
-    float yRandPos = random(65, 101);
+    float xRandPos = random(20, 81);
+    float yRandPos = random(45, 91);
 
     // Move the laser
     servo1.write(xRandPos);
